@@ -1,13 +1,22 @@
 
-import './App.css'
 
-function App() {
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Layout from "./Layout"
+import Home from "./screens/Home"
 
+import SingleProduct from "./components/SingleProduct"
 
+const App = () => {
   return (
-   <>
-   <h1 className='text-4xl'>CheRo Store</h1>
-   </>
+   <BrowserRouter>
+   
+<Routes>
+  <Route path="/" element={<Layout />}>
+  <Route  index element={<Home />} />
+  <Route path="/house/:id" element={<SingleProduct />} />
+  </Route>
+  </Routes>   
+   </BrowserRouter>
   )
 }
 
