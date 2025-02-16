@@ -26,12 +26,18 @@ const houseSchema = new mongoose.Schema({
   },
   name: { type: String, required: true },
   image: { type: String, required: true },
-  brand: { type: String, required: true },
-  category: { type: String, required: true },
+  type: { type: String, required: true },
+  location: { type: String, required: true },
+  bedrooms: { type: Number, required: true },
+  bathrooms: { type: Number, required: true },
+  area: { type: String, required: true },
+  availableFrom: { type: Date, required: true },
+
+  
   description: { type: String, required: true },
   available: { type: Boolean, required: true, default: true },
   price: { type: Number, required: true, default: 0 },
-  countInStock: { type: Number, required: true },
+  
   rating: { type: Number, required: true , default: 0},
   numReviews: { type: Number, required: true , default: 0},
   reviews: [reviewSchema],

@@ -2,11 +2,13 @@ import express from "express";
 import dotenv from 'dotenv';
 import cors from 'cors'; // Import CORS c
 import connectDB from "./config/db.js";
+import houseRoutes from "./routes/houseRoutes.js";
+import {notFound, errorHandler} from './middleware/errorMiddleware.js';
 
 dotenv.config();
 
 connectDB();
-import houses from './data/houses.js';
+
 
 const port = process.env.PORT || 5000;
 
@@ -22,17 +24,11 @@ app.get('/', (req, res) => {
   res.send('API is running');
 });
 
-app.get('/houses', (req, res) => {
-  res.json(houses);
-});
+app.use('/houses', houseRoutes);
 
-app.get('/houses/:id', (req, res) => {
-  const id = req.params.id;
+app.use(notFound);
+app.use(errorHandler);
 
-  console.log(id);
 
-  const house = houses.find((p) => p.id === parseInt(id));
-  res.json(house);
-});
 
 app.listen(port, () => console.log(`server is running on port ${port}`));

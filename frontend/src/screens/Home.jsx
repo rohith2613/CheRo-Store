@@ -6,11 +6,9 @@ import Houses from "./Houses"
 const Home = () => {
   return (
     <div className="">
-      <Hero />
-      
-      <div>
-        <Houses />
-      </div>
+      <Hero />    
+<Houses />
+     
        
     </div>
   )
